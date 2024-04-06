@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class main 
+public class Main 
 {
     public static void Cart() {
         // this will list all of the names and prices of each item
@@ -14,7 +14,7 @@ public class main
     // Takes 2 strings, email and password, and returns true if they match the hard coded emails and passwords
     public static boolean validEmailAndPassword(String email, String password){
         // 2D Array of valid emails and passwords
-        String[][] emailAndPasswordArray = {{"dmenhall@quinnipiac.edu", "password"}, {"pzegarek@quinnipiac.edu", "password2"}, {"pnora@quinnipiac.edu", "password3"}};
+        String[][] emailAndPasswordArray = {{"dmenhall@quinnipiac.edu", "password"}, {"pzegarek1@quinnipiac.edu", "password2"}, {"pnora@quinnipiac.edu", "password3"}};
 
         for(int i = 0; i < emailAndPasswordArray.length; i++){
             if(email.equals(emailAndPasswordArray[i][0]) && password.equals(emailAndPasswordArray[i][1])){
