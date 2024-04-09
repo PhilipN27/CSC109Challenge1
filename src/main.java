@@ -33,12 +33,13 @@ public class Main
     }
 
     public static void checkout() {
-        double cost = 0;
+        double totalCost = 0;
         for (Item item : cart) {
-            cost += item.price;
+            totalCost += item.price;
         }
-        System.out.println("Your total is: $"+cost);
+        System.out.println("Your total is: $"+totalCost);
     }
+    
     public static void Cart() {
         if (cart.isEmpty()) {
             System.out.println("Your cart is empty.");
@@ -66,7 +67,6 @@ public class Main
                 Cart();
                 break;
         }
-    }
         // Implement checkout functionality if required
         showMainMenu();
     }
