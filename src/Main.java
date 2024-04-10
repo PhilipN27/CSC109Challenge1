@@ -40,6 +40,31 @@ public class Main
             totalCost += item.price;
         }
         System.out.println("Your total is: $"+totalCost);
+        System.out.print("Are you satisfied with your purchase? (1=yes, 2=no): ");
+        int choice = scan.nextInt();
+        switch (choice) {
+            case 1:
+                for (Item it: cart) {
+                    try {
+                        int index = itemsForSale.indexOf(it);
+                        itemsForSale.remove(index);
+                    } catch (Exception e) {
+                        // this is so we can bypass exceptions
+                    }
+                }
+                cart.clear();
+                System.out.println("Cart cleared");
+                showMainMenu();
+                break;
+            case 2:
+                // Implement checkout functionality if required
+                showMainMenu();
+                break;
+            default:
+                System.out.println("Invalid option. Please try again.");
+                checkout();
+                break;
+        }
     }
     
     public static void Cart() {
