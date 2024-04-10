@@ -6,6 +6,7 @@ public class Main
     static ArrayList<Item> itemsForSale = new ArrayList<>();
     static ArrayList<Item> cart = new ArrayList<>();
     static Scanner scan = new Scanner(System.in);
+    static String[][] currentItemsForSale = new String[0][3];
 
     static class Item {
         String name;
@@ -87,8 +88,6 @@ public class Main
     // Has user login and if they fail 3 times then the program ends
     public static void login(){
 
-        Scanner scan = new Scanner(System.in);
-
         String email;
         String password;
         int numAttempts = 0;
@@ -128,8 +127,6 @@ public class Main
             System.out.println("YOU ARE LOCKED OUT DUE TO SUSPICIOUS ACTIVITY");
             System.exit(0);
         }
-
-        //scan.close();
     }
 
     public static void main(String[] args)
@@ -179,7 +176,7 @@ public class Main
                 buy();
                 break;
             case 2:
-                // Implement sell functionality if required
+                sell();
                 break;
             case 3:
                 Cart();
@@ -222,6 +219,54 @@ public class Main
         } else {
             System.out.println("Invalid option. Please try again.");
             buy();
+        }
+    }
+
+    public static void sell(){
+        System.out.println("\nSeller Options: \n1. Current Items \n2. Add New Item \n3. Back");
+        System.out.print("Select an option: ");
+        int choice = scan.nextInt();
+        scan.nextLine();
+        switch (choice) {
+            case 1:
+                System.out.println();
+                if(currentItemsForSale.length == 0){
+                    System.out.println("You have no items for sale");
+                }else{
+                    for(int i = 0; i < currentItemsForSale.length; i++){
+                        System.out.println("---Item " + (i+1) + "---");
+                        System.out.println("Name: " + currentItemsForSale[i][0] + " \nCategory: " + currentItemsForSale[i][1] + " \nPrice: $" + currentItemsForSale[i][2]);
+                    }
+                }
+                sell();
+                break;
+            case 2:
+                String[][] tempCurrentItemsForSale = new String[(currentItemsForSale.length + 1)][3];
+                for(int x = 0; x < currentItemsForSale.length; x++){
+                    for(int y = 0; y < 3; y++){
+                        tempCurrentItemsForSale[x][y] = currentItemsForSale[x][y];
+                    }
+                }
+                System.out.print("Enter name: ");
+                tempCurrentItemsForSale[tempCurrentItemsForSale.length-1][0] = scan.nextLine();
+            
+                System.out.print("Enter category: ");
+                tempCurrentItemsForSale[tempCurrentItemsForSale.length-1][1] = scan.nextLine();
+               
+                System.out.print("Enter price: ");
+                tempCurrentItemsForSale[tempCurrentItemsForSale.length-1][2] = scan.nextLine();
+
+                currentItemsForSale = tempCurrentItemsForSale;
+
+                sell();
+                break;
+            case 3:
+                showMainMenu();
+                break;
+            default:
+                System.out.println("Invalid option. Please try again.");
+                sell();
+                break;
         }
     }
 }
