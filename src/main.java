@@ -32,6 +32,14 @@ public class Main
         }
     }
 
+    public static void checkout() {
+        double totalCost = 0;
+        for (Item item : cart) {
+            totalCost += item.price;
+        }
+        System.out.println("Your total is: $"+totalCost);
+    }
+    
     public static void Cart() {
         if (cart.isEmpty()) {
             System.out.println("Your cart is empty.");
@@ -41,7 +49,24 @@ public class Main
                 System.out.println("- " + item.name + " - $" + item.price);
             }
         }
-        System.out.println("Do you want to go back to the main menu or do you want to go to checkout?");
+        System.out.println("What do you want to do now?");
+        System.out.println("1. Main Menu");
+        System.out.println("2. Checkout");
+        System.out.println("Select an option: ");
+        int choice = scan.nextInt();
+        switch (choice) {
+            case 1:
+                showMainMenu();
+                break;
+            case 2:
+                // Implement checkout functionality if required
+                checkout();
+                break;
+            default:
+                System.out.println("Invalid option. Please try again.");
+                Cart();
+                break;
+        }
         // Implement checkout functionality if required
         showMainMenu();
     }
