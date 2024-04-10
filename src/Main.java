@@ -8,6 +8,7 @@ public class Main
     static Scanner scan = new Scanner(System.in);
     static String[][] currentItemsForSale = new String[0][3];
 
+
     static class Item {
         String name;
         String category;
@@ -221,7 +222,6 @@ public class Main
             buy();
         }
     }
-
     public static void sell(){
         System.out.println("\nSeller Options: \n1. Current Items \n2. Add New Item \n3. Back");
         System.out.print("Select an option: ");
